@@ -21,9 +21,11 @@ ENV/
 
 # ─── Datasets (large, downloadable) ──────────────────────────────────────────
 asl_datasets/
-RealTimeObjectDetection/
 datasets/
 data/
+Tensorflow/
+tfod/
+*.whl
 
 # ─── Model Weights & Checkpoints ─────────────────────────────────────────────
 *.pt
