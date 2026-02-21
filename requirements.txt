@@ -1,0 +1,9 @@
+streamlit
+Pillow
+numpy
+pandas
+opencv-python
+ollama
+requests
+kaggle
+yt-dlp

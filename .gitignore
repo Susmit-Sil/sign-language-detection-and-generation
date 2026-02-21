@@ -1,0 +1,82 @@
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# ─── Virtual Environments ─────────────────────────────────────────────────────
+venv/
+env/
+.env/
+.venv/
+signlang_venv/
+ENV/
+
+# ─── Environment Variables / Secrets ──────────────────────────────────────────
+.env
+.env.local
+*.env
+
+# ─── Datasets (large, downloadable) ──────────────────────────────────────────
+asl_datasets/
+RealTimeObjectDetection/
+datasets/
+data/
+
+# ─── Model Weights & Checkpoints ─────────────────────────────────────────────
+*.pt
+*.pth
+*.onnx
+*.weights
+*.h5
+*.pkl
+*.joblib
+runs/
+weights/
+checkpoints/
+
+# ─── Generated Outputs ────────────────────────────────────────────────────────
+*.gif
+temp_frames/
+output/
+outputs/
+results/
+
+# ─── Jupyter Notebooks ────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ─── IDE / Editor ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Logs & Caches ────────────────────────────────────────────────────────────
+*.log
+*.cache
+.cache/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ─── Distribution / Build ─────────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# ─── Test / Coverage ──────────────────────────────────────────────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
