@@ -46,5 +46,3 @@ This project features a real-time American Sign Language (ASL) detection and gen
 ## How to Compile/Run the App
 Simply execute the `run_app.bat` file in your terminal or double-click it in the File Explorer. This will open the Streamlit application in your default web browser.
 
-## Screenshots / Demo
-*(Include screenshots or GIFs of the Streamlit application here)*
