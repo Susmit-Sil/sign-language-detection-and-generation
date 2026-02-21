@@ -16,13 +16,23 @@ This project features a real-time American Sign Language (ASL) detection and gen
    cd sign-language-detection-and-generation
    ```
 
-2. **Run the Initialization Script:**
+2. **Download Datasets & Set Up YOLO Model:**
+   Since large generic datasets and heavy trained YOLO models (`*.pt`) are not version-controlled via Git to keep the repository extremely fast, you need to acquire them locally:
+   - **For ASL Generation:** Run the downloader script. You'll need Kaggle CLI installed.
+     ```bash
+     python download_datasets.py
+     ```
+   - **For ASL Real-Time Recognition:** You need a trained YOLOv8 model named `best.pt`.
+     Place your pre-trained model inside `RealTimeObjectDetection/runs/detect/sign_language/weights/best.pt` or directly under `RealTimeObjectDetection/best.pt`.
+     *Note: If you don't have one, you can train a new real-time model using `RealTimeObjectDetection/train.py`.*
+
+3. **Run the Initialization Script:**
    The easiest way to get started is by running the `run_app.bat` script, which automatically sets up the Python virtual environment, installs dependencies, and launches the app.
    ```cmd
    run_app.bat
    ```
 
-3. **Alternatively, manually set up the environment:**
+4. **Alternatively, manually set up the environment:**
    ```bash
    python -m venv signlang_venv
    signlang_venv\Scripts\activate
