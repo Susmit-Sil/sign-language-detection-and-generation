@@ -26,6 +26,7 @@ data/
 Tensorflow/
 tfod/
 *.whl
+*.zip
 
 # ─── Model Weights & Checkpoints ─────────────────────────────────────────────
 *.pt

@@ -1,0 +1,119 @@
+================================================================================
+          DETAILED GUIDE: STORAGE CLEANUP & NEW PC RESTORATION
+================================================================================
+
+This document explains:
+1. What heavy files and folders you can safely delete to free up ~14 GB.
+2. What files you MUST keep locally.
+3. How to recover and restore everything on a new computer.
+
+--------------------------------------------------------------------------------
+PART 1: LOCAL STORAGE CLEANUP (WHAT & HOW TO DELETE)
+--------------------------------------------------------------------------------
+
+You can safely delete the following heavy folders and zip files because they are
+now fully backed up in the cloud (Hugging Face / GitHub).
+
+WARNING: Make sure you do not delete your Python (.py) scripts, config files,
+metadata files, requirements.txt, or .git folders!
+
+Folders to Delete:
+------------------
+1. [asl_datasets/] (Size: ~3.5 GB)
+   - Path: e:\Hackathon\asl_datasets
+   - Contains: Raw ASL images, CSVs, and videos. Already backed up as asl_datasets.zip on Hugging Face.
+
+2. [venv/] (Size: ~5.5 GB)
+   - Path: e:\Hackathon\venv
+   - Contains: The main project virtual environment libraries. Can be recreated in minutes using requirements.txt.
+
+3. [RealTimeObjectDetection/signlang_venv/] (Size: ~5.3 GB)
+   - Path: e:\Hackathon\RealTimeObjectDetection\signlang_venv
+   - Contains: The virtual environment libraries for the YOLO/Tensorflow sub-project. Can be recreated using RealTimeObjectDetection/requirements.txt.
+
+Files to Delete:
+----------------
+4. [asl_datasets.zip] (Size: ~3.4 GB)
+   - Path: e:\Hackathon\asl_datasets.zip
+   - Contains: Compressed version of the dataset. Safe to delete since it is uploaded.
+
+5. [RealTimeObjectDetection.zip] (Size: ~226 MB)
+   - Path: e:\Hackathon\RealTimeObjectDetection.zip
+   - Contains: Compressed version of the YOLO project code. Safe to delete.
+
+How to Delete Safely:
+---------------------
+You can delete them directly using Windows File Explorer (select folder, press Shift + Delete to bypass Recycle Bin and immediately reclaim space).
+Or using PowerShell/Command Prompt:
+   Remove-Item -Recurse -Force asl_datasets
+   Remove-Item -Recurse -Force venv
+   Remove-Item -Recurse -Force RealTimeObjectDetection/signlang_venv
+   Remove-Item asl_datasets.zip
+   Remove-Item RealTimeObjectDetection.zip
+
+
+--------------------------------------------------------------------------------
+PART 2: WHAT TO KEEP LOCALLY
+--------------------------------------------------------------------------------
+
+DO NOT delete the following files and folders:
+- All `.py` files (e.g. app.py, generator.py, translator.py, upload_to_hf.py)
+- `requirements.txt` (in root and inside RealTimeObjectDetection/)
+- `README.md`, `AGENT_SETUP.md`, `clone_walkthrough.txt`
+- `.gitignore` (prevents heavy files from being pushed to Git)
+- `.git/` folder (contains your git history)
+
+
+--------------------------------------------------------------------------------
+PART 3: HOW TO RECOVER EVERYTHING ON A NEW PC
+--------------------------------------------------------------------------------
+
+Follow these exact steps when setting up the project on a new computer:
+
+Step A: Clone the Code from GitHub
+----------------------------------
+1. Open terminal on your new PC and run:
+   git clone <your-github-repo-url>
+   cd <your-cloned-folder>
+
+Step B: Recreate the Root Virtual Environment (main project)
+------------------------------------------------------------
+1. Create a fresh virtual environment:
+   python -m venv venv
+
+2. Activate the virtual environment:
+   - On PowerShell: .\venv\Scripts\Activate.ps1
+   - On Command Prompt: .\venv\Scripts\activate.bat
+
+3. Install the exact same libraries/dependencies:
+   pip install -r requirements.txt
+
+Step C: Recreate the RealTimeObjectDetection Virtual Environment
+----------------------------------------------------------------
+1. Create the sub-project virtual environment:
+   python -m venv RealTimeObjectDetection/signlang_venv
+
+2. Activate this sub-environment:
+   - On PowerShell: .\RealTimeObjectDetection\signlang_venv\Scripts\Activate.ps1
+   - On Command Prompt: .\RealTimeObjectDetection\signlang_venv\Scripts\activate.bat
+
+3. Install its dependencies:
+   pip install -r RealTimeObjectDetection/requirements.txt
+
+Step D: Download Datasets from Hugging Face
+-------------------------------------------
+1. Activate your root virtual environment (Step B).
+2. Install huggingface_hub if it isn't already installed:
+   pip install huggingface_hub
+   
+3. Run the following command to download your datasets zip directly from Hugging Face back into your project:
+   huggingface-cli download --repo-type dataset susmitsil07/sign-language-dataset --local-dir .
+   
+4. Extract the downloaded `asl_datasets.zip` using PowerShell:
+   Expand-Archive -Path asl_datasets.zip -DestinationPath asl_datasets
+   
+5. (Optional) Extract the `RealTimeObjectDetection.zip` if you need to restore any deleted custom scripts or model files in that subfolder:
+   Expand-Archive -Path RealTimeObjectDetection.zip -DestinationPath RealTimeObjectDetection -Force
+
+You are now ready to run your application on the new PC!
+================================================================================
